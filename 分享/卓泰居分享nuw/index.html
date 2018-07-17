@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<title>全民金服活动</title>
+		<script src="md5.js" type="text/javascript" charset="utf-8"></script>
+		<script src="axios.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#divid_1{
+				width:100%;
+				height:0.55rem;
+				border-bottom:0.005rem solid #e6e6e6;
+				line-height: 0.55rem;
+				text-align: center;
+				font-size:0.12rem;
+				color:#ff6600;
+				margin-top:-0.2rem;
+			}
+			#ul_1{
+				width:3rem;
+				margin:auto;
+				margin-top:0.2rem;
+				list-style: none;
+			}
+			#ul_1>li{
+				width:100%;
+				height:0.6rem;
+				border-bottom:0.005rem solid #e6e6e6;
+				box-sizing: border-box;
+			}
+			.phone_class{
+				float:left;
+				height:100%;
+				border:none;
+				text-indent: 0.15rem;
+				font-size:0.14rem;
+				outline: none;
+			}
+			.code_class{
+				float:left;
+				height:100%;
+				border:none;
+				text-indent: 0.15rem;
+				font-size:0.14rem;
+				outline: none;
+			}
+			.password_class{
+				float:left;
+				height:100%;
+				border:none;
+				text-indent: 0.15rem;
+				font-size:0.14rem;
+				outline: none;
+			}
+			.yqcode_class{
+				float:left;
+				height:100%;
+				border:none;
+				text-indent: 0.15rem;
+				font-size:0.14rem;
+				outline: none;
+			}
+			#ul_1>li>div{
+				float:right;
+				font-size:0.12rem;
+				height:0.6rem;
+				margin-right:0.15rem;
+				line-height: 0.6rem;
+				color:#6facde;
+			}
+			#zcbtn{
+				width:2.8rem;
+				margin:auto;
+				height:0.5rem;
+				background:#fbbf00;
+				margin-top:0.22rem;
+				border-radius: 0.06rem;
+				text-align: center;
+				line-height: 0.5rem;
+				color:#ffffff;
+				font-size:0.16rem;
+				margin-bottom:0.2rem;
+			}
+			#warpbtnapp{
+					width:100%;
+					height: 100%;
+					position: fixed;
+					background:rgba(225,225,225,0.8);
+					top:0;
+					left:0;
+					z-index: 99999;
+					display: none;
+				}
+				#warpbtnapp>div{
+					width:40%;
+					height:100px;
+					position:fixed;
+					top:50%;
+					left:50%;
+					font-size:0.2rem;
+					margin-top: -100px;
+					margin-left:-20%;
+					background:#ffffff;
+					display:inline-block;
+				}
+				#warpbtnapp>div>img{
+					width:100%;
+				}
+				#warpbtnapp>div>div{
+					text-align: center
+				}
+		</style>
+	</head>
+	<body>
+		<div id="warpbtnapp">
+			<div>
+				<img src="img/bottomimga.png"/>
+				<div>注册成功</div>
+				<div>扫描下载APP</div>
+			</div>
+		</div>
+		<img style="width:100%;" src="img/title.png" alt="" />
+		<div id="divid_1">您的好友，邀请您进入全民金服共享理财!</div>
+		<ul id="ul_1">
+			<li>
+				<input class="phone_class" type="" name="" id="" value="" placeholder="手机号码"/>
+			</li>
+			<li>
+				<input class="code_class" type="" name="" id="" value="" placeholder="输入手机验证码"/>
+				<div class="codebtn">获取验证码</div>
+			</li>
+			<li>
+				<input class="password_class" type="password" name="" id="" value="" placeholder="设置6-16位登录密码"/>
+				<div class="passwordbtn">显示</div>
+			</li>
+			<li>
+				<input class="yqcode_class" type="" name="" id="" value="" placeholder="邀请码(可不填写)"/>
+			</li>
+		</ul>
+		<div id="zcbtn">立即注册</div>
+	</body>
+	<script type="text/javascript">
+		(function(win){		
+	
+		    var doc = win.document;
+		    var docEl = doc.documentElement;
+		    var tid;
+		    function refreshRem() {
+		        var width = docEl.getBoundingClientRect().width;
+		        if (width > 750) { // 最大宽度
+		            width = 750;
+		        }
+		        var rem = width / 3.75; 
+		        docEl.style.fontSize = rem + 'px';
+		    }
+		
+		    win.addEventListener('resize', function() {
+		        clearTimeout(tid);
+		        tid = setTimeout(refreshRem, 300);
+		    }, false);
+		    win.addEventListener('pageshow', function(e) {
+		        if (e.persisted) {
+		            clearTimeout(tid);
+		            tid = setTimeout(refreshRem, 300);
+		        }
+		    }, false);
+		
+		    refreshRem();
+		
+			})(window);
+		var url=location.search;
+		var urllist=url.split("&")
+		var name = urllist[0].split("=")[1]//姓名
+		var codeyqm = urllist[1].split("=")[1]//邀请码
+			
+		var warpbtnapp = document.getElementById("warpbtnapp")//点击注册使其显示
+		var phone=document.querySelector(".phone_class")//手机号码
+		var passwordbtn = document.querySelector(".passwordbtn")//显示隐藏密码
+		var code=document.querySelector(".code_class")//验证码
+		var password=document.querySelector(".password_class")//密码
+		var yqcode=document.querySelector(".yqcode_class")//邀请码
+		var btn = document.querySelector("#zcbtn")//注册按钮
+		var codebtn = document.querySelector(".codebtn")//点击获取验证码
+		var time = 120;
+		//获取全局数据
+		axios.post('http://39.108.37.60:8008/member/index_data')//首页数据
+			.then((response)=>{
+				console.log(response.data.total_amount)
+		});
+					
+		
+		passwordbtn.onclick=function(){
+			if(passwordbtn.innerHTML=="显示"){
+				password.type="text"
+				passwordbtn.innerHTML="不显示"
+			}else{
+				passwordbtn.innerHTML="显示"
+				password.type="password"
+			}
+		}
+		codebtn.onclick=function(){//点击获取验证码
+			var phonevalue=phone.value//手机号码
+			if(phonevalue!==""){
+					if(!(/^1[34578]\d{9}$/.test(phonevalue))){ 
+			        	alert("不是完整的11位手机号或者正确的手机号前七位"); 
+			        	return false; 
+			    	}else{
+			    		//axios
+						axios.post("http://39.108.37.60:8008/common/send_verify_code",{
+							mobile:phonevalue,
+							name:phonevalue,
+							type:'REGISTER',
+						}).then(function(response){
+							if(response.data.code=="0"){
+								alert("验证码已发送")
+								var setval = setInterval(function(){
+									codebtn.innerHTML=--time+"秒"
+									if(time==-1){
+										clearInterval(setval)
+										codebtn.innerHTML="获取验证码"
+										time=120
+									}
+								},1000)
+								
+								
+							}
+						}).catch(function(){
+							alert("验证码发送失败")
+								var setval = setInterval(function(){
+									codebtn.innerHTML=--time+"秒"
+									if(time==-1){
+										clearInterval(setval)
+										codebtn.innerHTML="获取验证码"
+										time=120
+									}
+								},1000)
+						})
+					}
+				}else{
+					alert("手机号码不能为空")
+						
+			    }
+			
+		};
+		btn.onclick=function(){//发送注册
+			var phonevalue=phone.value//手机号码
+			var codevalue=code.value//验证码
+			var passwordvalue=password.value//密码
+			var yqcodevalue=yqcode.value//邀请码
+			if(phonevalue!==""){
+					if(!(/^1[34578]\d{9}$/.test(phonevalue))){ 
+			        	alert("不是完整的11位手机号或者正确的手机号前七位"); 
+			        	return false; 
+			    	}else{
+			    		if(codevalue!==""){
+			    			if(!(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/.test(passwordvalue))){ 
+							  	alert("必须是8~16位含字母和数字的密码")
+							 }else{
+							 	var passwordvalues = md5(passwordvalue)
+							 	axios.post("http://39.108.37.60:8008/member/register/",{
+							 		mobile:phonevalue,//手机号码
+									password:passwordvalues,//密码
+									sms_verify_code:codevalue,//验证码
+									recommend_code:yqcodevalue?yqcodevalue:"18680367953"//邀请码
+							 	}).then(function(response){
+							 		if(response.data.code=="0"){
+							 			warpbtnapp.style.display="block"
+							 			alert("注册成功")
+							 		}else{
+							 			alert(response.data.msg)
+
+							 		}
+							 	})
+							 }
+			    		}else{
+			    			alert("手机验证码不能为空")
+			    		}						
+					}
+						
+				}else{
+					alert("手机号码不能为空")
+				}
+		}
+		warpbtnapp.onclick=function(){
+				warpbtnapp.style.display="none"
+		};
+	</script>
+</html>

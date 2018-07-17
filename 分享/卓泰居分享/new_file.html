@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<title>全民金服活动</title>
+		<script src="md5.js" type="text/javascript" charset="utf-8"></script>
+		<script src="axios.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+				
+			}
+			.top{
+				position:relative;
+			}
+
+			#topidleft{
+					width:70%;
+					margin-left:15%;
+					color:#FFFFFF;
+				}
+			
+			#topidleft>div{
+				float:left;
+				border-left:2px solid #FFFFFF;
+				margin-left:0.2rem;
+				padding-left:0.2rem;
+			}
+			.floatdiv{
+				margin-top:0.2rem;	
+			}
+			.floatdiv>div:nth-of-type(2){
+				border-left: 1px solid #FFFFFF;
+				box-sizing: border-box;
+				margin-left:0.2rem;
+				padding-left:0.2rem;
+			}
+			.floatdiv>div{
+				float:left;
+			}
+			@media(max-width:800px ){
+				.top{
+					width:100%;
+					height:5.5rem;
+					
+				}
+				#topidleft{
+					width:85%;
+					margin-left:7%;
+					color:#FFFFFF;
+				}
+				.abstop{
+					height:2rem;
+					top:1.8rem;
+				}
+				.topleft{
+					width:100%;
+					height:3.5rem;
+					background-color:#333333;
+					border-top:1px solid #333333;
+					text-align: center;
+				}
+				.tops{
+					width:100%;
+					height:11rem;
+					position:relative;
+				}
+				.toplefttwo{
+					width:100%;
+					height:1.5rem;
+					background-color:#333333;
+					border-top:1px solid #333333;
+					text-align: center;
+				}
+				.toprighttwo{
+					width:100%;
+					height:8.5rem;
+					background-color:#FFFFFF;
+					text-align: center;
+				}
+				.topright{
+					width:100%;
+					height:2rem;
+					background-color:#FFFFFF;
+
+					text-align: center;
+				}
+				.topright>div{
+					font-size:0.16rem;
+					padding-top:0.2rem;
+					width: 100%;
+					text-align: center;
+				}
+				#topidleft{
+					font-size:0.16rem;
+					margin-top:0.34rem;;
+					
+				}
+				
+				#topidleft>img{
+					float:left;
+					width:30%;
+				}
+				.floatdiv{
+					margin-top:0.1rem;
+				}
+				.abstop{
+					width:85%;
+					height:2rem;
+					position:absolute;
+					left:7%;
+					background-color:#FC6648;
+					z-index:2;
+				}
+				.abstop>img{
+					width:2.5rem;
+					height:2rem;
+					margin-top:-0.1rem;
+					margin-left:0.1rem;
+					float:left;
+				}
+				.abstop>div{
+					float:left;
+					color:#FFFFFF;
+					font-size: 0.16rem;
+					margin-left:0.2rem;
+				}
+				.abstop>div>div:nth-of-type(1){
+					font-weight: bold;
+					font-size: 0.2rem;
+					padding-top:0.15rem;
+				}
+				.abstop>div>div:nth-of-type(2){
+					font-weight: bold;
+					font-size: 0.16rem;
+					margin-top:0.15rem;
+				}
+				.abstop>div>div:nth-of-type(3){
+					font-size: 0.14rem;
+					
+				}
+				.abstop>div>div:nth-of-type(4){
+					font-weight: bold;
+					font-size: 0.16rem;
+					margin-top:0.15rem;
+				}
+				.abstop>div>div:nth-of-type(5){
+					font-size: 0.14rem;
+					
+				}
+				.top>img:nth-of-type(1){
+					position:absolute;
+					width:1.5rem;
+					top:0;
+					left:78%;
+					top:2.6rem;
+					z-index: 999;
+				}
+				.top>img:nth-of-type(2){
+					width:0.8rem;
+					position: absolute;
+					left:12%;
+					bottom:0.5rem;
+				}
+				.toplefttwo>div>div{
+					float:left;
+				}
+				.toplefttwo{
+					text-align: center;
+				}
+				.toplefttwo>div{
+					margin-top:-0.5rem;
+					display: inline-block;
+				}
+				.toprighttwo>div>div{
+					float:left;
+				}
+				.toprighttwo{
+					text-align: center;
+				}
+				.toprighttwo>div{
+					
+					display: inline-block;
+				}
+				.topcetner{
+					margin-top:1.5rem;
+				}
+				.xian{
+					width:2rem;
+					border-bottom:1px solid #FFFFFF;
+					padding-top:0.1rem;
+					
+				}
+				.text{
+					font-size:0.18rem;
+					color:#FFFFFF;
+					vertical-align: middle;
+					margin:0 0.1rem;
+				}
+				.topsimgs{
+					width:85%;
+					height:2.1rem;
+					position:absolute;
+					left:7%;
+					top:1.5rem;
+					background:url(img/xzxrzt.png) no-repeat 100% 100%;
+					background-size:100% 2.1rem;
+				}
+				.toptexttwo{
+					font-size: 0.2rem;
+					padding-top:1.5rem;
+				}
+				.inputdiv{
+					width:80%;
+					height:0.8rem;
+					border:1px solid #333333;
+					margin-top:0 !important;
+					border-radius: 4px;
+					overflow: hidden;
+					float:left;
+					margin-left:10%;
+					margin-bottom:0.3rem;
+				}
+				.btnzc{
+					width:80%;
+					height:0.8rem;
+					border-radius: 6px;
+					background:#fe7356;
+					text-align: center;
+					line-height: 0.8rem;
+					color:#FFFFFF;
+					font-size:0.3rem;
+					float:left;
+					margin-left:10%;
+					margin-top:0.3rem;
+				}
+				.inputdivone{
+					float:left;
+					width:0.9rem;
+					height:0.8rem;
+					background:url(img/shoujihao.png) #fe7356 no-repeat;
+					background-position:0.25rem 0.1rem;
+					background-size:0.4rem 0.6rem;
+				}
+				.inputidvthree{
+					float:left;
+					width:0.9rem;
+					height:0.8rem;
+					background:url(img/yanzhengm.png) #fe7356 no-repeat;
+					background-position:0.25rem 0.1rem;
+					background-size:0.4rem 0.6rem;
+				}
+				.inputidvtwo{
+					float:left;
+					width:0.9rem;
+					height:0.8rem;
+					background:url(img/mima.png) #fe7356 no-repeat;
+					background-position:0.25rem 0.1rem;
+					background-size:0.4rem 0.6rem;
+				}
+				.inputdiv>input{
+					float:left;
+					height:0.8rem;
+					border:none;
+					outline: none;
+					text-indent: 6px;
+					width:83%; 
+				}
+				.passwordd{
+					width:0.5rem;
+					font-size:0.4rem !important;
+					font-size:0.24rem !important;
+				}
+				.inputdivones{
+					width:60%;
+					height:0.8rem;
+					border:1px solid #333333;
+					border-radius: 6px;
+					float:left;
+					box-sizing: border-box;
+					overflow: hidden;
+				}
+				.inputdivones>div{
+					height:0.76rem;
+				}
+				.inputdivones>input{
+					float:left;
+					height:0.75rem;
+					border:none;
+					outline: none;
+					text-indent: 6px;
+					width:70%; 
+					
+				}
+				.inputdivtwos{
+					width:33% !important;
+					height:0.75rem !important;
+					float:right;
+					margin-left:0.4rem;
+					font-size:0.18rem;
+					text-align: center;
+					line-height: 0.75rem;
+					background-color:#fe7356;
+					border-radius: 6px;
+					color:#FFFFFF;
+				}
+				.inputdivtwosdd{
+					width:33% !important;
+					height:0.75rem !important;
+					float:right;
+					margin-left:0.4rem;
+					font-size:0.18rem;
+					text-align: center;
+					line-height: 0.75rem;
+					background-color:#fe7356;
+					border-radius: 6px;
+					color:#FFFFFF;
+				}
+				.inputdivtwo{
+					width:33% !important;
+					height:0.75rem !important;
+					float:right;
+					margin-left:0.4rem;
+					font-size:0.18rem;
+					text-align: center;
+					line-height: 0.75rem;
+					background-color:#fe7356;
+					border-radius: 6px;
+					color:#FFFFFF;
+				}
+				.div_1{
+					width:100%;
+					
+				}
+				.div_1>div{
+					float:left;
+					width:33.3333%;
+					font-size:0.2rem;
+					color:#FFFFFF;
+					text-align: center;
+				}
+				.div_1>div>img{
+					width:0.4rem;
+					vertical-align: middle;
+				}
+				.div_1>div>span{
+					vertical-align: middle;
+					margin-left:0.1rem;
+				}
+				.div_2{
+					width:100%;
+					margin-top:0.2rem !important;
+					font-size:0.24rem;
+					
+				}
+				.div_2>div{
+					width:50%;
+					float:left;
+					text-align: center;
+				}
+				.div_2>div>img{
+					width:40%;
+				}
+				#warpbtnapp{
+					width:100%;
+					height: 100%;
+					position: fixed;
+					background:rgba(225,225,225,0.8);
+					top:0;
+					left:0;
+					z-index: 99999;
+					display: none;
+				}
+				#warpbtnapp>div{
+					width:40%;
+					height:100px;
+					position:fixed;
+					top:50%;
+					left:50%;
+					margin-top: -100px;
+					margin-left: -20%;
+					background:#ffffff;
+				}
+				#warpbtnapp>div>img{
+					width:100%;
+				}
+				#warpbtnapp>div>div{
+					font-size:0.4rem;
+					text-align: center
+				}
+			}
+			
+			@media(min-width:800px ) {
+				.top{
+					width:100%;
+					height:1000px;
+					
+					
+				}
+				.topleft{
+					width:100%;
+					height:500px;
+					background-color:#333333;
+					border-top:1px solid #333333;
+				}
+				.topright{
+					width:100%;
+					height:450px;
+					background-color:#FFFFFF;
+				}
+				#topidleft{
+					
+					margin-top:36px;
+				}
+				#topidleft>div{
+					margin-top:35px;
+					font-size:22px; 
+				}
+				.abstop{
+					margin-top:30px;
+					width:70%;
+					height:400px;
+					background-color:#fc6648;
+					position:absolute;
+					top:2rem;
+					left:15%;
+				}
+				.abstop>img{
+					width:500px;
+					height:400px;
+					margin-top:-20px;
+					margin-left:20px;
+					float:left;
+				}
+				#topidleft>img{
+					float:left;
+					width:400px;
+					
+				}
+				.abstop>div{
+					display: inline-block;
+					font-size:18px;
+					color:#FFFFFF;
+					float:left;
+					margin-left:84px;
+				}
+				.abstop>div>div:nth-of-type(1){
+					font-size:28px;
+					font-weight: bold;
+					padding-top:50px;
+				}
+				.abstop>div>div:nth-of-type(2){
+					font-size:20px;
+					font-weight: bold;
+					margin-top:50px;
+				}
+				.abstop>div>div:nth-of-type(3){
+					
+					margin-top:10px;
+				}
+				.abstop>div>div:nth-of-type(4){
+					font-size:20px;
+					font-weight: bold;
+					margin-top:50px;
+				}
+				.abstop>div>div:nth-of-type(5){					
+					margin-top:10px;
+				}
+				
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!-- <div class="top"> -->
+			<!-- <div class="topleft">
+				<div id="topidleft">
+					<img src="img/shouyelogo.png"/>
+					<div>
+						<div class="floatdiv1">房产供应链金融领航者</div>
+						<div class="floatdiv">
+							<div>轻松投资</div>
+							<div>乐享收益</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+			<!-- <div class="topright">
+				<p class="haoyouyaoqingnum" style="font-size:0.3rem;color:#FE7356;float:left;width: 100%;text-align: center;margin-top:0.5rem;">好友邀请码</p>
+				<div>
+					<div>						
+						您的好友<span class="namespan" style="color:#FE7356; font-size:0.3rem;font-weight: bold;">张久</span>邀您一起加入全民金服
+					</div>
+					<div>
+						轻松投资，乐享收益，获取丰厚投资收益
+					</div>
+				</div>
+			</div> -->
+			<!-- <img src="img/liwu.png"/>
+			<div class="abstop">
+				<img src="img/zutu.png"/>
+				<div>
+					<div>注册立享双重好礼!</div>
+					<div>奖励一</div>
+					<div>新人专享300元红包</div>
+					<div>奖励二</div>
+					<div>100元VIP会员</div>
+				</div>
+				
+			</div>
+			<img src="img/yaoqinghaoyou.png"/>
+		</div> -->
+		
+		
+		<div class="tops">
+			<!-- <div class="topsimgs"> -->
+				
+			<!-- </div> -->
+			<div class="toplefttwo">
+				<div>
+					<div class="xian"></div>
+					<div class="text">选择全民金服</div>
+					<div class="xian"></div>
+				</div>
+			</div>
+			<div class="toprighttwo">
+				<!-- <div class="topcetner">
+					<div class="xian" style="border-color:#333333;"></div>
+					<div class="text" style="color:#333333;">注册领取礼包</div>
+					<div class="xian" style="border-color:#333333;"></div>
+				</div> -->
+				<div class="topright">
+					<p class="haoyouyaoqingnum" style="font-size:0.3rem;color:#FE7356;float:left;width: 100%;text-align: center;margin-top:0.5rem;">好友邀请码</p>
+					<div>
+						<div>						
+							您的好友<span class="namespan" style="color:#FE7356; font-size:0.3rem;font-weight: bold;">张久</span>邀您一起加入全民金服
+						</div>
+						<div>
+							轻松投资，乐享收益，获取丰厚投资收益
+						</div>
+					</div>
+				</div>
+				<div class="inputdiv">
+					<div class='inputdivone'></div>
+					<input type="text" class="number" name="" id="" value="" placeholder="请输入您的手机号码"/>
+				</div>
+				<div class="inputdiv" style="border:none;">
+					<div class="inputdivones">
+						<div class="inputidvthree"></div>
+						<input class="inputthree" type="text" name="" id="" value="" placeholder="请输入您的短信验证码"/>
+					</div>
+					<input type="button" class="inputdivtwos" value="获取验证码"/>
+					<!--<butotn class="inputdivtwos" disabled="false">获取短信验证码</button>-->
+				</div>
+				<div class="inputdiv">
+					<div class="inputidvtwo"></div>
+					<input type="text" class="passwords" name="" id="" value="" placeholder="请输入您的登录密码"/>
+				</div>
+				<div class="inputdiv" style="border:none;">
+					<div class="inputdivones">
+						<div class="inputidvthree"></div>
+						<input class="passwordd" type="text" name="" id="" value="" placeholder="请输入邀请码"/>
+					</div>
+					<input type="button" class="inputdivtwosdd" value="邀请码可不填写"/>
+				</div>
+				
+				<div style="font-size:0.16rem; float:left;margin-left:10%;margin-top:0.2rem;">
+					注册即同意<span style="color:#fe7356;">《注册服务协议》</span>
+				</div>
+				<div class="btnzc">
+					注册
+				</div>
+			</div>
+			
+		</div>
+		<!-- <div class="toplefttwo">
+				<div>
+					<div class="xian"></div>
+					<div class="text">严格风控措施</div>
+					<div class="xian"></div>
+				</div>
+				<div class="div_1">
+					<div><img src="img/shixin.png" alt="" /><span>贷前反诈骗</span></div>
+					<div><img src="img/shixin.png" alt="" /><span>贷中实时监控</span></div>
+					<div><img src="img/shixin.png" alt="" /><span>贷后重催收</span></div>
+				</div>
+		</div> -->
+		<!-- <div class="toplefttwo" style="background-color:#FFFFFF;height:4rem;">
+				<div>
+					<div class="xian" style="border-color:#333333;"></div>
+					<div class="text" style="color:#333333;">手机APP下载</div>
+					<div class="xian" style="border-color:#333333;"></div>
+				</div>
+				<div class="div_2">
+					<div>
+						<img src="img/bottomimga.png"/>
+						<div>安卓端APP下载</div>
+					</div> -->
+					<!-- <div>
+						<img src="img/bottomimga.png"/>
+						<div>IOS端APP下载</div>
+					</div> -->
+				<!-- </div> -->
+		<!-- </div> -->
+		<div id="warpbtnapp">
+			<div>
+				<img src="img/bottomimga.png"/>
+				<div>注册成功</div>
+				<div>扫描下载APP</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">		
+  			var namespan=document.querySelector(".namespan");
+			(function(win){		
+	
+		    var doc = win.document;
+		    var docEl = doc.documentElement;
+		    var tid;
+		    function refreshRem() {
+		        var width = docEl.getBoundingClientRect().width;
+		        if (width > 750) { // 最大宽度
+		            width = 750;
+		        }
+		        var rem = width / 7.5; 
+		        docEl.style.fontSize = rem + 'px';
+		    }
+		
+		    win.addEventListener('resize', function() {
+		        clearTimeout(tid);
+		        tid = setTimeout(refreshRem, 300);
+		    }, false);
+		    win.addEventListener('pageshow', function(e) {
+		        if (e.persisted) {
+		            clearTimeout(tid);
+		            tid = setTimeout(refreshRem, 300);
+		        }
+		    }, false);
+		
+		    refreshRem();
+		
+			})(window);
+			var passwordd = document.querySelector(".passwordd");
+  			var haoyouyaoqingnum = document.querySelector(".haoyouyaoqingnum");//好友邀请码
+			var warpbtnapp = document.getElementById("warpbtnapp")//点击注册使其显示
+			var url=location.search;
+			console.log(url)
+			var urllist=url.split("&")
+			var name = urllist[0].split("=")[1]
+			var code = urllist[1].split("=")[1]
+			console.log(code)
+			haoyouyaoqingnum.innerHTML="好友邀请码："+code
+			var message=decodeURIComponent(name)
+			namespan.innerHTML=message
+			var numberbtn=document.querySelector('.number')//手机号码输入
+			var hqbtn=document.querySelector('.inputdivtwos')//发送验证码
+			var btnzc=document.querySelector(".btnzc")//注册按钮
+			var time=60
+			warpbtnapp.onclick=function(){
+				warpbtnapp.style.display="none"
+			};
+			hqbtn.onclick=function(){//点击注册
+				var numbers=document.querySelector('.number').value//输入的手机号码
+				if(numbers!==""){
+					if(!(/^1[34578]\d{9}$/.test(numbers))){ 
+			        	alert("不是完整的11位手机号或者正确的手机号前七位"); 
+			        	return false; 
+			    	}else{
+			    			//axios
+						axios.post("http://39.108.37.60:8008/common/send_verify_code",{
+							mobile:numbers,
+							name:numbers,
+							type:'REGISTER',
+						}).then(function(response){
+							if(response.data.code=="0"){
+								alert("验证码已发送")
+								hqbtn.setAttribute("disabled", "disabled")
+								var setval = setInterval(function(){
+									hqbtn.value=--time+"秒"
+									console.log("sss")
+									if(time==-1){
+										clearInterval(setval)
+										hqbtn.value="发送验证码"
+										time=60
+										hqbtn.removeAttribute("disabled");
+									}
+								},1000)
+								
+								
+							}
+						}).catch(function(){
+							alert("验证码发送失败")
+							hqbtn.setAttribute("disabled", "disabled")
+								var setval = setInterval(function(){
+									hqbtn.value=--time+"秒"
+									console.log("sss")
+									if(time==-1){
+										clearInterval(setval)
+										hqbtn.value="发送验证码"
+										time=60
+										hqbtn.removeAttribute("disabled");
+									}
+								},1000)
+						})
+					}
+				}else{
+					alert("手机号码不能为空")
+						
+			    }
+			}
+			
+			 
+			btnzc.onclick=function(){//点击注册
+				var numbers=document.querySelector('.number').value//输入的手机号码
+				var inputthree=document.querySelector('.inputthree').value//输入的手机验证码
+				var passwords=document.querySelector('.passwords').value//输入的手机密码
+				var recommendcode=""//验证码
+				passwordd.value==""?recommendcode="18680367953":recommendcode=passwordd.value;
+				if(numbers!==""){
+					if(!(/^1[34578]\d{9}$/.test(numbers))){ 
+			        	alert("不是完整的11位手机号或者正确的手机号前七位"); 
+			        	return false; 
+			    	}else{
+			    		if(inputthree!==""){
+			    			if(!(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/.test(passwords))){ 
+							  	
+								  .0("必须是8~16位含字母和数字的密码")
+							 }else{
+							 	var passowrdss = md5(passwords)
+							 	console.log(passowrdss)
+							 	axios.post("http://39.108.37.60:8008/member/register/",{
+							 		mobile:numbers,
+									password:passowrdss,
+									sms_verify_code:inputthree,
+									recommend_code:recommendcode
+							 	}).then(function(response){
+							 		console.log(response)
+							 		if(response.data.code=="0"){
+							 			warpbtnapp.style.display="block"
+							 			alert("注册成功")
+							 		}else{
+							 			alert(response.data.msg)
+
+							 		}
+							 	})
+							 }
+			    		}else{
+			    			alert("手机验证码不能为空")
+			    		}
+						
+					}
+						
+				}else{
+					alert("手机号码不能为空")
+				}	
+			}
+			
+  	</script>
+  	
+</html>

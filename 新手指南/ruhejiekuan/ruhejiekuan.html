@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>如何借款</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<style type="text/css">
+		<style type="text/css">
+			html,body{
+				background-color:#F5F5F5;
+			}
+			.div_1{
+				font-size:0.3rem;
+				font-weight: bold;
+				margin-top:0.6rem;
+				margin-left:0.24rem;
+			}
+			.div_2{
+				width:94%;
+				margin:auto;
+				margin-top:0.3rem;
+				font-size:0.26rem;
+				color:#333333;
+			}
+			.imgs{
+				width:70%;
+				margin-left:15%;
+				margin-top:0.2rem;
+			}
+			.imgstwo{
+				margin-top:0.3rem;
+				width:94%;
+				margin-left:3%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div_1" style="margin-top:0.3rem">借款人条件</div>
+		<div class="div_2">
+			<div>(1) 22-55周岁的中国公民</div>
+			<div>(2) 工薪阶层，需要在现单位工作满3个月，月收入2000以上企业老板，企业经营时间满1年</div>
+			<div>抵押贷款，需要自己名下有房产或车产。</div>
+		</div>
+		<div class="div_1">操作步骤</div>
+		<div class="div_2">
+			1.按照系统提示完成账号注册、实名认证、绑定银行卡、开通第三方资金托管账户；
+		</div>
+		<div class="div_2">
+			2.首页我们为您提供了快速借款通道，方便您操作；
+		</div>
+		<img class="imgs" src="imgs/shouye.png"/>
+		<div class="div_2">
+			3.点击借款通道，填写信息，提交借款申请；
+		</div>
+		<img class="imgs" src="imgs/tongdao.png"/>
+		<div class="div_2">
+			4.系统收到您的借款申请，将会和您联系，按照借款制度提交相关材料，审核通过则借款成功。
+		</div>
+		<div class="div_1">借款流程</div>
+		<img class="imgstwo" src="imgs/liucheng.png"/>
+		<div class="div_1">借款注意事项</div>
+		<div class="div_2" style="margin-bottom:2rem">
+			<div>1.平台风控采用严谨的银行风控审核体制，确保投资人的资金安全和收益回报。</div>
+			<div>2.借款申请失败可能与您的信用等级、综合还款能力、借款用途的清晰、所提交的材料等综合情况未通过风控审核有关；</div>
+			<div>3.逾期还款将入中国人民银行征信系统，请您务必提前或按时还款，以免给您以后的生活带来不良影响。</div>
+		</div>
+	</body> 
+	<script type="text/javascript">
+		var userAgent = navigator.userAgent;
+		var cookiestr = document.cookie;
+		if (userAgent.indexOf('cdvsupport') >= 0 || cookiestr.indexOf('cdvsupport') >= 0) {
+		    //alert('nativejs')
+		document.write("<script type='text/javascript' src='nacodovafile/js/cdplugins.js#nacodovafile'><\/script>");
+		document.write("<script type='text/javascript' src='nacodovafile/js/cordova.js#nacodovafile'><\/script>");
+		}
+		
+		function deviceReadyOne(cb_back){
+			var deviceReady = function(){
+			        document.removeEventListener("deviceready", deviceReady, false);
+			        if('function' == typeof cb_back){
+			        cb_back();
+			        }
+			}
+			document.addEventListener("deviceready", deviceReady, false);
+		}
+		function setPageTitle(title) {
+		document.title = title;
+		var callback = function(){
+		    try{
+		    window.CD58UtilsPlugin.setTitle(title);
+		    }catch(e){}
+		}
+		if (window.CD58UtilsPlugin) {
+		    callback();
+		} else {
+		    deviceReadyOne(callback);
+		}
+		}
+		setPageTitle("如何借款");
+		
+		(function(win) {		
+		    var doc = win.document;
+		    var docEl = doc.documentElement;
+		    var tid;
+		    function refreshRem() {
+		        var width = docEl.getBoundingClientRect().width;
+		        if (width > 750) {// 最大宽度
+		            width = 750;
+		        }
+		        var rem = width / 7.5; 
+		        docEl.style.fontSize = rem + 'px';
+		    }		
+		    win.addEventListener('resize', function(){
+		        clearTimeout(tid);
+		        tid = setTimeout(refreshRem, 300);
+		    }, false);
+		    win.addEventListener('pageshow', function(e) {
+		        if (e.persisted) {
+		            clearTimeout(tid);
+		            tid = setTimeout(refreshRem, 300);
+		        }
+		    }, false);
+		
+		    refreshRem();
+		
+			})(window);
+	</script>
+</html>
