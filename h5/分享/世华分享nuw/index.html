@@ -209,7 +209,7 @@
 				password.type="password"
 			}
 		}
-		codebtn.onclick=function(){//点击获取验证码
+		codebtn.onclick=function(){//点击获取验证
 			var phonevalue=phone.value//手机号码
 			if(phonevalue!==""){
 					if(!(/^1[34578]\d{9}$/.test(phonevalue))){ 
@@ -274,8 +274,18 @@
 									recommend_code:codeyqm//邀请码
 							 	}).then(function(response){
 							 		if(response.data.code=="0"){
-							 			warpbtnapp.style.display="block"
+							 			// warpbtnapp.style.display="block"
 							 			alert("注册成功")
+							 			setTimeout(function(){
+							 				var u = navigator.userAgent;
+											var url ="http://www.qmjf123.com/appdownload/"; //当前设备信息
+											if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {//安卓手机
+											    url = "http://www.qmjf123.com/appdownload/";
+											} else if (u.indexOf('iPhone') > -1) {//苹果手机
+											    url = "https://itunes.apple.com/us/app/id1424906658?l=zh&ls=1&mt=8";
+											}
+											window.location.href = url;
+							 			},500)
 							 		}else{
 							 			alert(response.data.msg)
 
